@@ -25,8 +25,15 @@ This assumes you already have:
    ```
 2. Put the BCT8 into **Remote mode**: hold `RMT` on the front panel for ~2
    seconds, select a transfer speed (9600 is a safe default), confirm with
-   `E`. This does not survive a scanner power-cycle -- it has to be redone
-   by hand each time the scanner loses power.
+   `E`. This only needs to be done once -- confirmed (including a full
+   unplug, not just the power knob) that the BCT8 retains this setting
+   through a power cycle, so it does not need to be redone after a scanner
+   reboot. It also doesn't matter if the service is already running when
+   you do this: Darkice's USB audio adapter and this script's USB-to-serial
+   adapter are both separate USB devices from the scanner itself, so
+   neither loses its connection to the Pi when only the scanner is power-
+   cycled -- the service just sees the scanner go quiet and come back on
+   its own, with no reconnect logic needed.
 3. Confirm the serial link works before installing the service:
    ```
    python3 -c "
@@ -121,8 +128,9 @@ journalctl -u bct8-freqtag.service -n 5
      wants straight-through; only BCT8-to-BCT8 Clone mode wants null-modem).
   3. Physical connector/mounting hardware preventing a full seat (loose
      DB-9 shells with the wrong screws can look connected but aren't).
-  4. BCT8 not actually in Remote mode (see Prerequisites step 2) -- this
-     resets on every scanner power-cycle.
+  4. BCT8 not actually in Remote mode (see Prerequisites step 2). This
+     setting persists through power cycles, so this is only likely on a
+     scanner that's never had it enabled at all.
 
   A quick way to isolate cable vs. scanner: short pins 2 and 3 together on
   the disconnected DB-9 end and try the same `SI` query above. A real reply
