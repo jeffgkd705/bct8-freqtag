@@ -1,0 +1,10 @@
+__pycache__/
+*.pyc
+
+# Uniden's copyrighted owner's manual -- kept locally for reference,
+# not redistributed. See README.md for the official source link.
+BCT8om.pdf
+
+# Personal, hostname/user-specific ops notes for this exact deployment --
+# kept locally for reference. See DEPLOYMENT.md for the generic guide.
+DEPLOY_NOTES.txt

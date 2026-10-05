@@ -1,0 +1,18 @@
+[Unit]
+Description=BCT8 scanner frequency tagging for AirNav Radar Icecast feed
+After=network-online.target darkice.service
+Wants=network-online.target
+
+[Service]
+Type=simple
+# Must be a user in the "dialout" group (for /dev/ttyUSB0 access) that can
+# also read /etc/darkice.cfg -- see DEPLOYMENT.md for why this usually
+# can't just be the same user Darkice itself runs as.
+User=<your-user>
+ExecStart=/usr/bin/python3 /usr/local/bin/bct8_freq_tag.py
+Restart=always
+RestartSec=5
+Environment=BCT8_LOG_LEVEL=INFO
+
+[Install]
+WantedBy=multi-user.target
