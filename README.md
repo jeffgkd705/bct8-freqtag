@@ -67,6 +67,9 @@ All configuration is in `bct8_freq_tag.py`:
 See `DEPLOYMENT.md` for the full install/setup walkthrough, including
 prerequisites, troubleshooting a non-responsive serial link, and rollback.
 
+## AI Notification
+This application was vibe-coded with Claude Code. Caveat Emptor.
+
 ## License
 
 MIT -- see `LICENSE`.
